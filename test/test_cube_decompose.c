@@ -81,38 +81,38 @@ int test_cube_decomposition(){
 
     expected.t0.v1.x = p1x;
     expected.t0.v1.y = p1y;
-    expected.t0.v1.z = p0z;
+    expected.t0.v1.z = p1z;
     expected.t0.v1.prty = 1;
 
     expected.t0.v2.x = p3x;
     expected.t0.v2.y = p3y;
-    expected.t0.v2.z = p0z;
+    expected.t0.v2.z = p3z;
     expected.t0.v2.prty = 3;
 
     expected.t0.v3.x = p5x;
     expected.t0.v3.y = p5y;
-    expected.t0.v3.z = p0z + l;
+    expected.t0.v3.z = p5z;
     expected.t0.v3.prty = 5;
 
     //tetrahedron 1
     expected.t1.v0.x = p1x;
     expected.t1.v0.y = p1y;
-    expected.t1.v0.z = p0z;
+    expected.t1.v0.z = p1z;
     expected.t1.v0.prty = 1;
 
     expected.t1.v1.x = p2x;
     expected.t1.v1.y = p2y;
-    expected.t1.v1.z = p0z;
+    expected.t1.v1.z = p2z;
     expected.t1.v1.prty = 2;
 
     expected.t1.v2.x = p3x;
     expected.t1.v2.y = p3y;
-    expected.t1.v2.z = p0z;
+    expected.t1.v2.z = p3z;
     expected.t1.v2.prty = 3;
 
     expected.t1.v3.x = p5x;
     expected.t1.v3.y = p5y;
-    expected.t1.v3.z = p0z + l;
+    expected.t1.v3.z = p5z;
     expected.t1.v3.prty = 5;
 
     //tetrahedron 2
@@ -123,81 +123,81 @@ int test_cube_decomposition(){
 
     expected.t2.v1.x = p3x;
     expected.t2.v1.y = p3y;
-    expected.t2.v1.z = p0z;
+    expected.t2.v1.z = p3z;
     expected.t2.v1.prty = 3;
 
     expected.t2.v2.x = p4x;
     expected.t2.v2.y = p4y;
-    expected.t2.v2.z = p0z + l;
+    expected.t2.v2.z = p4z;
     expected.t2.v2.prty = 4;
 
     expected.t2.v3.x = p5x;
     expected.t2.v3.y = p5y;
-    expected.t2.v3.z = p0z + l;
+    expected.t2.v3.z = p5z;
     expected.t2.v3.prty = 5;
 
     //tetrahedron 3
     expected.t3.v0.x = p2x;
     expected.t3.v0.y = p2y;
-    expected.t3.v0.z = p0z;
+    expected.t3.v0.z = p2z;
     expected.t3.v0.prty = 2;
 
     expected.t3.v1.x = p3x;
     expected.t3.v1.y = p3y;
-    expected.t3.v1.z = p0z;
+    expected.t3.v1.z = p3z;
     expected.t3.v1.prty = 3;
 
     expected.t3.v2.x = p5x;
     expected.t3.v2.y = p5y;
-    expected.t3.v2.z = p0z + l;
+    expected.t3.v2.z = p5z;
     expected.t3.v2.prty = 5;
 
     expected.t3.v3.x = p6x;
     expected.t3.v3.y = p6y;
-    expected.t3.v3.z = p0z + l;
+    expected.t3.v3.z = p6z;
     expected.t3.v3.prty = 6;
 
     //tetrahedron 4
     expected.t4.v0.x = p3x;
     expected.t4.v0.y = p3y;
-    expected.t4.v0.z = p0z;
+    expected.t4.v0.z = p3z;
     expected.t4.v0.prty = 3;
 
     expected.t4.v1.x = p5x;
     expected.t4.v1.y = p5y;
-    expected.t4.v1.z = p0z + l;
+    expected.t4.v1.z = p5z;
     expected.t4.v1.prty = 5;
 
     expected.t4.v2.x = p6x;
     expected.t4.v2.y = p6y;
-    expected.t4.v2.z = p0z + l;
+    expected.t4.v2.z = p6z;
     expected.t4.v2.prty = 6;
 
     expected.t4.v3.x = p7x;
     expected.t4.v3.y = p7y;
-    expected.t4.v3.z = p0z + l;
+    expected.t4.v3.z = p7z;
     expected.t4.v3.prty = 7;
 
 
     //tetrahedron 5
     expected.t5.v0.x = p3x;
     expected.t5.v0.y = p3y;
-    expected.t5.v0.z = p0z;
+    expected.t5.v0.z = p3z;
     expected.t5.v0.prty = 3;
 
     expected.t5.v1.x = p4x;
     expected.t5.v1.y = p4y;
-    expected.t5.v1.z = p0z + l;
+    expected.t5.v1.z = p4z;
     expected.t5.v1.prty = 4;
 
     expected.t5.v2.x = p5x;
     expected.t5.v2.y = p5y;
-    expected.t5.v2.z = p0z + l;
+    expected.t5.v2.z = p5z;
     expected.t5.v2.prty = 5;
 
     expected.t5.v3.x = p7x;
     expected.t5.v3.y = p7y;
-    expected.t5.v3.z = p0z + l;
+    expected.t5.v3.z = p7z;
     expected.t5.v3.prty = 7;
 
     cube_decomposition(&result, origin_x, origin_y, origin_z, l, i, j, k, values);
