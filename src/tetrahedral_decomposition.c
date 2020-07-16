@@ -3,7 +3,7 @@
 #include <tetrahedral_decomposition.h>
 #include <tetrahedral_utils.h>
 
-struct T6Cube* decompose_domain(double o_x, double o_y, double o_z, double l, double domain_l){
+struct T6Cube* decompose_domain(double o_x, double o_y, double o_z, double l, double domain_l, double ***values){
 
     size_t max_idx = (size_t) domain_l / l;
     struct T6Cube* decomposition = (struct T6Cube*) calloc(max_idx * max_idx * max_idx, sizeof(struct T6Cube));
@@ -12,13 +12,13 @@ struct T6Cube* decompose_domain(double o_x, double o_y, double o_z, double l, do
         for (j = 0; j < max_idx; j++)
             for (k = 0; k < max_idx; k++){
                 int idx = i + j * max_idx + k * (max_idx * max_idx);
-                cube_decomposition(&(decomposition[idx]), o_x, o_y, o_z, l, i, j, k);
+                cube_decomposition(&(decomposition[idx]), o_x, o_y, o_z, l, i, j, k, values);
             }
 
     return decomposition;
 }
 
-void cube_decomposition(struct T6Cube* c_decom, double o_x, double o_y, double o_z, double l, size_t i, size_t j, size_t k){
+void cube_decomposition(struct T6Cube* c_decom, double o_x, double o_y, double o_z, double l, size_t i, size_t j, size_t k, double ***values){
 
     double x0, y0, z0;
     x0 = o_x + i * l;
@@ -30,84 +30,125 @@ void cube_decomposition(struct T6Cube* c_decom, double o_x, double o_y, double o
     c_decom->t0.v0.x = x0;
     c_decom->t0.v0.y = y0;
     c_decom->t0.v0.z = z0;
+    c_decom->t0.v0.prty = values[i][j][k];
+
     c_decom->t0.v1.x = x0 + l;
     c_decom->t0.v1.y = y0;
     c_decom->t0.v1.z = z0;
+    c_decom->t0.v1.prty = values[i + 1][j][k];
+
     c_decom->t0.v2.x = x0;
     c_decom->t0.v2.y = y0 + l;
     c_decom->t0.v2.z = z0;
+    c_decom->t0.v2.prty = values[i][j + 1][k];
+
     c_decom->t0.v3.x = x0 + l;
     c_decom->t0.v3.y = y0;
     c_decom->t0.v3.z = z0 + l;
+    c_decom->t0.v3.prty = values[i + 1][j][k + 1];
                       
     //tetrahedron 1
     c_decom->t1.v0.x = x0 + l;
     c_decom->t1.v0.y = y0;
     c_decom->t1.v0.z = z0;
+    c_decom->t1.v0.prty = values[i + 1][j][k];
+
     c_decom->t1.v1.x = x0 + l;
     c_decom->t1.v1.y = y0 + l;
     c_decom->t1.v1.z = z0;
+    c_decom->t1.v1.prty = values[i + 1][j + 1][k];
+
     c_decom->t1.v2.x = x0;
     c_decom->t1.v2.y = y0 + l;
     c_decom->t1.v2.z = z0;
+    c_decom->t1.v2.prty = values[i][j + 1][k];
+
     c_decom->t1.v3.x = x0 + l;
     c_decom->t1.v3.y = y0;
     c_decom->t1.v3.z = z0 + l;
+    c_decom->t1.v3.prty = values[i + 1][j][k + 1];
                       
     //tetrahedron 2
     c_decom->t2.v0.x = x0;
     c_decom->t2.v0.y = y0;
     c_decom->t2.v0.z = z0;
+    c_decom->t2.v0.prty = values[i][j][k];
+
     c_decom->t2.v1.x = x0;
     c_decom->t2.v1.y = y0 + l;
     c_decom->t2.v1.z = z0;
+    c_decom->t2.v1.prty = values[i][j + 1][k];
+
     c_decom->t2.v2.x = x0;
     c_decom->t2.v2.y = y0;
     c_decom->t2.v2.z = z0 + l;
+    c_decom->t2.v2.prty = values[i][j][k + 1];
+
     c_decom->t2.v3.x = x0 + l;
     c_decom->t2.v3.y = y0;
     c_decom->t2.v3.z = z0 + l;
+    c_decom->t2.v3.prty = values[i + 1][j][k + 1];
                       
     //tetrahedron 3
     c_decom->t3.v0.x = x0 + l;
     c_decom->t3.v0.y = y0 + l;
     c_decom->t3.v0.z = z0;
+    c_decom->t3.v0.prty = values[i + 1][j + 1][k];
+
     c_decom->t3.v1.x = x0;
     c_decom->t3.v1.y = y0 + l;
     c_decom->t3.v1.z = z0;
+    c_decom->t3.v1.prty = values[i][j + 1][k];
+
     c_decom->t3.v2.x = x0 + l;
     c_decom->t3.v2.y = y0;
     c_decom->t3.v2.z = z0 + l;
+    c_decom->t3.v2.prty = values[i + 1][j][k + 1];
+
     c_decom->t3.v3.x = x0 + l;
     c_decom->t3.v3.y = y0 + l;
     c_decom->t3.v3.z = z0 + l;
+    c_decom->t3.v3.prty = values[i + 1][j + 1][k + 1];
                       
     //tetrahedron 4
     c_decom->t4.v0.x = x0;
     c_decom->t4.v0.y = y0 + l;
     c_decom->t4.v0.z = z0;
+    c_decom->t4.v0.prty = values[i][j + 1][k];
+
     c_decom->t4.v1.x = x0 + l;
     c_decom->t4.v1.y = y0;
     c_decom->t4.v1.z = z0 + l;
+    c_decom->t4.v1.prty = values[i + 1][j][k + 1];
+
     c_decom->t4.v2.x = x0 + l;
     c_decom->t4.v2.y = y0 + l;
     c_decom->t4.v2.z = z0 + l;
+    c_decom->t4.v2.prty = values[i + 1][j + 1][k + 1];
+
     c_decom->t4.v3.x = x0;
     c_decom->t4.v3.y = y0 + l;
     c_decom->t4.v3.z = z0 + l;
+    c_decom->t4.v3.prty = values[i][j + 1][k + 1];
                       
     //tetrahedron 5
     c_decom->t5.v0.x = x0;
     c_decom->t5.v0.y = y0 + l;
     c_decom->t5.v0.z = z0;
+    c_decom->t5.v0.prty = values[i][j + 1][k];
+
     c_decom->t5.v1.x = x0;
     c_decom->t5.v1.y = y0;
     c_decom->t5.v1.z = z0 + l;
+    c_decom->t5.v1.prty = values[i][j][k + 1];
+
     c_decom->t5.v2.x = x0 + l;
     c_decom->t5.v2.y = y0;
     c_decom->t5.v2.z = z0 + l;
+    c_decom->t5.v2.prty = values[i + 1][j][k + 1];
+
     c_decom->t5.v3.x = x0;
     c_decom->t5.v3.y = y0 + l;
     c_decom->t5.v3.z = z0 + l;
-
+    c_decom->t5.v3.prty = values[i][j + 1][k + 1];
 }

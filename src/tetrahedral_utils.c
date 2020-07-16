@@ -38,11 +38,15 @@ int same_tetrahedron(struct Tetrahedron *expected, struct Tetrahedron *result){
         return 0;
     if (expected->v0.z != result->v0.z)
         return 0;
+    if (expected->v0.prty != result->v0.prty)
+        return 0;
     if (expected->v1.x != result->v1.x)
         return 0;
     if (expected->v1.y != result->v1.y)
         return 0;
     if (expected->v1.z != result->v1.z)
+        return 0;
+    if (expected->v1.prty != result->v1.prty)
         return 0;
     if (expected->v2.x != result->v2.x)
         return 0;
@@ -50,11 +54,15 @@ int same_tetrahedron(struct Tetrahedron *expected, struct Tetrahedron *result){
         return 0;
     if (expected->v2.z != result->v2.z)
         return 0;
+    if (expected->v2.prty != result->v2.prty)
+        return 0;
     if (expected->v3.x != result->v3.x)
         return 0;
     if (expected->v3.y != result->v3.y)
         return 0;
     if (expected->v3.z != result->v3.z)
+        return 0;
+    if (expected->v3.prty != result->v3.prty)
         return 0;
 
     return 1;

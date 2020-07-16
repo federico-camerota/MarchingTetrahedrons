@@ -24,15 +24,19 @@ int test_same_tetrahedron(){
     t1.v0.x = t2.v0.x = 1;
     t1.v0.y = t2.v0.y = 1;
     t1.v0.z = t2.v0.z = 1;
+    t1.v0.prty = t2.v0.prty = 1;
     t1.v1.x = t2.v1.x = 1;
     t1.v1.y = t2.v1.y = 1;
     t1.v1.z = t2.v1.z = 1;
+    t1.v1.prty = t2.v1.prty = 1;
     t1.v2.x = t2.v2.x = 1;
     t1.v2.y = t2.v2.y = 1;
     t1.v2.z = t2.v2.z = 1;
+    t1.v2.prty = t2.v2.prty = 1;
     t1.v3.x = t2.v3.x = 1;
     t1.v3.y = t2.v3.y = 1;
     t1.v3.z = t2.v3.z = 1;
+    t1.v3.prty = t2.v3.prty = 1;
 
     int result =  same_tetrahedron(&t1, &t2);
     int expected = 1;
