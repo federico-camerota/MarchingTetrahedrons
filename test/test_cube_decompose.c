@@ -53,7 +53,7 @@ int test_cube_decomposition(){
     p7y = p3y;
     p7z = p3z + l;
 
-    struct T6Cube expected, *result;
+    struct T6Cube expected, result;
     //tetrahedron 0
     expected.t0.v0.x = p0x;
     expected.t0.v0.y = p0y;
@@ -138,11 +138,9 @@ int test_cube_decomposition(){
     expected.t5.v3.y = p7y;
     expected.t5.v3.z = p0z + l;
 
-    result = cube_decomposition(origin_x, origin_y, origin_z, l, i, j, k);
+    cube_decomposition(&result, origin_x, origin_y, origin_z, l, i, j, k);
 
-    int passed = same_cube_decomposition(&expected, result);
-
-    free(result);
+    int passed = same_cube_decomposition(&expected, &result);
 
     return passed;
 }

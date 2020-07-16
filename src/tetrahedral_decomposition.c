@@ -3,23 +3,23 @@
 #include <tetrahedral_decomposition.h>
 #include <tetrahedral_utils.h>
 
-struct T6Cube** decompose_domain(double o_x, double o_y, double o_z, double l, double domain_l){
+struct T6Cube* decompose_domain(double o_x, double o_y, double o_z, double l, double domain_l){
 
     size_t max_idx = (size_t) domain_l / l;
-    struct T6Cube** decomposition = (struct T6Cube**) calloc(max_idx * max_idx * max_idx, sizeof(struct T6Cube*));
+    struct T6Cube* decomposition = (struct T6Cube*) calloc(max_idx * max_idx * max_idx, sizeof(struct T6Cube));
     int i, j, k;
     for (i = 0; i < max_idx; i++)
         for (j = 0; j < max_idx; j++)
-            for (k = 0; k < max_idx; k++)
-                decomposition[i + j * max_idx + k * (max_idx * max_idx)] = cube_decomposition(o_x, o_y, o_z, l, i, j, k);
+            for (k = 0; k < max_idx; k++){
+                int idx = i + j * max_idx + k * (max_idx * max_idx);
+                cube_decomposition(&(decomposition[idx]), o_x, o_y, o_z, l, i, j, k);
+            }
 
     return decomposition;
 }
 
-struct T6Cube* cube_decomposition(double o_x, double o_y, double o_z, double l, size_t i, size_t j, size_t k){
+void cube_decomposition(struct T6Cube* c_decom, double o_x, double o_y, double o_z, double l, size_t i, size_t j, size_t k){
 
-    struct T6Cube* c_decom = (struct T6Cube*) malloc(sizeof(struct T6Cube));
-    
     double x0, y0, z0;
     x0 = o_x + i * l;
     y0 = o_y + j * l;
@@ -110,5 +110,4 @@ struct T6Cube* cube_decomposition(double o_x, double o_y, double o_z, double l, 
     c_decom->t5.v3.y = y0 + l;
     c_decom->t5.v3.z = z0 + l;
 
-    return c_decom;
 }
