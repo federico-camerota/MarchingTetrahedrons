@@ -3,6 +3,7 @@
 #define T_UTILS
 struct TPoint{
     double x, y, z;
+    double prty;
 };
 
 struct Tetrahedron{
