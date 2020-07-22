@@ -30,6 +30,31 @@ int same_cube_decomposition(struct T6Cube *expected, struct T6Cube *result){
     return 1;
 }
 
+int same_cube5_decomposition(struct T5Cube *expected, struct T5Cube *result){
+
+    //tetrahedron 0
+    if (!same_tetrahedron(&(expected->t0), &(result->t0)))
+        return 0;
+                      
+    //tetrahedron 1
+    if (!same_tetrahedron(&(expected->t1), &(result->t1)))
+        return 0;
+                      
+    //tetrahedron 2
+    if (!same_tetrahedron(&(expected->t2), &(result->t2)))
+        return 0;
+                      
+    //tetrahedron 3
+    if (!same_tetrahedron(&(expected->t3), &(result->t3)))
+        return 0;
+                      
+    //tetrahedron 4
+    if (!same_tetrahedron(&(expected->t4), &(result->t4)))
+        return 0;
+                      
+    return 1;
+}
+
 
 int same_tetrahedron(struct Tetrahedron *expected, struct Tetrahedron *result){
     if (expected->v0.x != result->v0.x)

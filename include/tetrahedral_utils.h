@@ -21,6 +21,7 @@ struct T5Cube{
 };
 
 int same_cube_decomposition(struct T6Cube *c1, struct T6Cube *c2);
+int same_cube5_decomposition(struct T5Cube *c1, struct T5Cube *c2);
 int same_tetrahedron(struct Tetrahedron *expected, struct Tetrahedron *result);
 
 #endif
