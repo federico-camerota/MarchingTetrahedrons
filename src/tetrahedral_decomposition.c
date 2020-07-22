@@ -152,3 +152,4 @@ void cube_decomposition(struct T6Cube* c_decom, double o_x, double o_y, double o
     c_decom->t5.v3.z = z0 + l;
     c_decom->t5.v3.prty = values[i][j + 1][k + 1];
 }
+

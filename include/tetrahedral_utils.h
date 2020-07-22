@@ -15,6 +15,11 @@ struct T6Cube{
     struct Tetrahedron t0, t1, t2, t3, t4, t5;
 };
 
+struct T5Cube{
+
+    struct Tetrahedron t0, t1, t2, t3, t4;
+};
+
 int same_cube_decomposition(struct T6Cube *c1, struct T6Cube *c2);
 int same_tetrahedron(struct Tetrahedron *expected, struct Tetrahedron *result);
 
