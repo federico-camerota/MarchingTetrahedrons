@@ -10,6 +10,11 @@ struct Tetrahedron{
     struct TPoint v0, v1, v2, v3;
 };
 
+struct Tetrahedron_v2{
+
+    struct TPoint *v0, *v1, *v2, *v3;
+};
+
 struct T6Cube{
 
     struct Tetrahedron t0, t1, t2, t3, t4, t5;
@@ -18,6 +23,12 @@ struct T6Cube{
 struct T5Cube{
 
     struct Tetrahedron t0, t1, t2, t3, t4;
+};
+
+struct T5Cube_v2{
+
+    struct TPoint v0, v1, v2, v3, v4, v5, v6, v7;
+    struct Tetrahedron_v2 t0, t1, t2, t3, t4;
 };
 
 int same_cube_decomposition(struct T6Cube *c1, struct T6Cube *c2);
