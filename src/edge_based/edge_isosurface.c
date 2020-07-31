@@ -21,6 +21,8 @@ struct surface edge_isosurface(double isovalue, double o_x, double o_y, double o
                 f_end = edge_decomposition(isovalue, r, faces , f_end, edge_intercep, o_x, o_y, o_z, l, i, j, k, values);
             }
 
+    faces = realloc(faces, f_end);
+
     return (struct surface) {
          f_end,
          v_end,
